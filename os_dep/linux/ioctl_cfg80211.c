@@ -9291,7 +9291,7 @@ static void rtw_cfg80211_init_vht_capab(_adapter *padapter
 
 	sta_vht_cap->vht_supported = 1;
 
-	_rtw_memcpy(&sta_vht_cap->cap, vht_cap_ie + 2, 4);
+	sta_vht_cap->cap = le32_to_cpup((u32 *)(vht_cap_ie + 2));
 	_rtw_memcpy(&sta_vht_cap->vht_mcs, vht_cap_ie + 2 + 4, 8);
 }
 #endif /* defined(CONFIG_80211AC_VHT) && (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)) */

@@ -46,6 +46,10 @@
 
 #ifdef PLATFORM_LINUX
 	#include <linux/version.h>
+	#ifndef RHEL_RELEASE_CODE
+	#define RHEL_RELEASE_VERSION(a,b) (((a) << 8) + (b))
+	#define RHEL_RELEASE_CODE 0
+	#endif
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0))
 	#include <linux/sched/signal.h>
 	#include <linux/sched/types.h>
